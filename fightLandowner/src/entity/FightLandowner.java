@@ -57,7 +57,7 @@ public class FightLandowner {
 
 
     //玩家进场
-    public void begin1() {
+    private void begin1() {
         Scanner in = new Scanner(System.in);
         String name;
         Number number;
@@ -71,7 +71,7 @@ public class FightLandowner {
     }
 
     //发牌
-    public void begin2() {
+    private void begin2() {
         //初始化一副扑克牌
         PlayingCard playingCard = new PlayingCard();
         //洗牌
