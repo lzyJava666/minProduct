@@ -4,7 +4,6 @@ import com.java.crawler.resource.entity.Content;
 import com.java.crawler.resource.entity.Novel;
 import com.java.crawler.resource.service.BaseService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
@@ -17,6 +16,11 @@ public class NovelController {
     @Autowired
     BaseService url1Service;
 
+    /**
+     * 获取内容资源
+     * @param data
+     * @return
+     */
     @PostMapping("/get")
     public Content get(@RequestBody Map<String, String> data) {
         String url = data.get("url");
@@ -27,6 +31,12 @@ public class NovelController {
         return content;
     }
 
+
+    /**
+     * 查看目录
+     * @param data
+     * @return
+     */
     @PostMapping("/getDirectory")
     public List<Map<String, String>> getDirectory(@RequestBody Map<String, String> data) {
         String url = data.get("url");
@@ -37,6 +47,12 @@ public class NovelController {
         return directory;
     }
 
+    /**
+     * 搜索小说功能
+     * @param name
+     * @return
+     * @throws IOException
+     */
     @GetMapping("/search")
     public List<Novel> search(@RequestParam("name") String name) throws IOException {
         List<Novel> search = url1Service.search(name);
@@ -45,5 +61,4 @@ public class NovelController {
         }
         return search;
     }
-
 }
